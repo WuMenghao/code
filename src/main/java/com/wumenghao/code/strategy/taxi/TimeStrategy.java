@@ -1,5 +1,8 @@
 package com.wumenghao.code.strategy.taxi;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -11,6 +14,13 @@ public class TimeStrategy {
     public TimeStrategy(Integer payTimeGt, Integer payTimeLt) {
         this.payTimeGt = payTimeGt;
         this.payTimeLt = payTimeLt;
+    }
+
+    public boolean matches(Date endTime){
+        Instant instant = endTime.toInstant();
+        LocalDateTime localDateTime = instant.atZone(ZoneId.systemDefault()).toLocalDateTime();
+        boolean rs = payTimeGt < localDateTime.getHour() && localDateTime.getHour() <= payTimeLt;
+        return rs;
     }
 
     public Integer getPayTimeGt() {
