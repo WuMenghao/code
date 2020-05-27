@@ -1,19 +1,21 @@
 ##出租车收费问题解决方案
 
 ###（1）主要组件
-    interface:
-        Transportation   : 交通工具接口，可以用于扩展交通工具类别 getPayAmount 方法可获得最后支付额
-        PayStrategy      : 收费策略接口，不同交通工具中聚合不同类别的实现
-        PayParam         : 收费计算时传入的参数接口，不同交通工具中聚合不同类别的实现
-    abstractClass:
-        TaxiPayStrategy  : 出租车收费策略抽象类，里面聚合了TimeStrategy链
-    class:
-        Taxi             : Transportation的实现类
-        ATaxPayStrategy  : A类出租车收费策略
-        TaxiPayPatam     : 收费参数
-        TimeStrategy     : 计程车的时间策略，聚合了DistStrategy策略链
-        DistStrategy     : 计程车的里程策略，最底层的计费策略
-        
+```
+interface:
+    Transportation   : 交通工具接口，可以用于扩展交通工具类别 getPayAmount 方法可获得最后支付额
+    PayStrategy      : 收费策略接口，不同交通工具中聚合不同类别的实现
+    PayParam         : 收费计算时传入的参数接口，不同交通工具中聚合不同类别的实现
+abstractClass:
+    TaxiPayStrategy  : 出租车收费策略抽象类，里面聚合了TimeStrategy链
+class:
+    Taxi             : Transportation的实现类
+    ATaxPayStrategy  : A类出租车收费策略
+    TaxiPayPatam     : 收费参数
+    TimeStrategy     : 计程车的时间策略，聚合了DistStrategy策略链
+    DistStrategy     : 计程车的里程策略，最底层的计费策略
+```
+
 ### (2)使用示例
 
 ```
